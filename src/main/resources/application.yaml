@@ -1,0 +1,53 @@
+quarkus:
+  smallrye-openapi:
+    info-title: order-svc
+    auto-add-security-requirement: false
+
+  swagger-ui:
+    always-include: true
+    path: /swagger
+
+
+  datasource:
+    db-kind: postgresql
+    jdbc:
+      # Is set to 5 as we have 112 connections in total
+      initial-size: 1
+      min-size: 1
+      max-size: 5
+      url: ${MTOGO_DB_BASE_URL}/customer_svc_db
+    username: ${MTOGO_DB_USERNAME}
+    password: ${MTOGO_DB_PASSWORD}
+
+    transaction-manager:
+      default-transaction-timeout: 300s
+  hibernate-orm:
+    database:
+      generation: update
+
+  rest-client:
+    product-api:
+      url: ${MTOGO_PRODUCT_SERVICE_URL}
+
+customer:
+  msvc:
+
+"%dev":
+  quarkus:
+    http:
+      port: 8087
+    log:
+      level: INFO
+      category:
+        "org.apa.cam.com.fil.rem.SftpOperations": ERROR
+
+      console:
+        json: false
+    hibernate-orm:
+      database:
+        default-schema: "\"customer\""
+"%prod":
+  quarkus:
+    hibernate-orm:
+      database:
+        default-schema: "\"customer\""
