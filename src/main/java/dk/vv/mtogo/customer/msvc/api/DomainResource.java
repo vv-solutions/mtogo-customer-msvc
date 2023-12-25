@@ -57,4 +57,11 @@ public class DomainResource {
     public AddressDTO createCustomer(@Name("customerId") int id, AddressDTO addressDTO) {
         return customerFacade.createNewAddress(id,addressDTO);
     }
+
+    @Query("getCustomerById")
+    @Description("Get customer by id")
+    public CustomerDTO getCustomerById(@Name("customerId") int id) {
+        return customerFacade.getCustomerById(id);
+    }
+
 }

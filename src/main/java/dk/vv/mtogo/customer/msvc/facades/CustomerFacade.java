@@ -78,4 +78,9 @@ public class CustomerFacade {
         return repository.findAll().list().stream().map(Customer::toDto).collect(Collectors.toList());
     }
 
+    @Transactional
+    public CustomerDTO getCustomerById(int id){
+        return repository.findById((long) id).toDto();
+    }
+
 }

@@ -167,4 +167,20 @@ class CustomerFacadeIT {
 
     }
 
+    @Test
+    @Transactional
+    void when_get_customer_by_id_4_then_first_name_should_be_Alice(){
+
+        //Arrange
+        int customerId = 4;
+        String expectedFirstName = "Alice";
+
+        //ACT
+        CustomerDTO actual = classUnderTest.getCustomerById(customerId);
+
+        //Assert
+        Assertions.assertEquals(expectedFirstName,actual.getFirstName());
+
+    }
+
 }
