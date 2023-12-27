@@ -27,10 +27,6 @@ quarkus:
     database:
       generation: update
 
-  rest-client:
-    product-api:
-      url: ${MTOGO_PRODUCT_SERVICE_URL}
-
 customer:
   msvc:
 
