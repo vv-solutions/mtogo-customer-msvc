@@ -1,6 +1,6 @@
 quarkus:
   http:
-    port: 8085
+#    port: 8085
   smallrye-openapi:
     info-title: order-svc
     auto-add-security-requirement: false
